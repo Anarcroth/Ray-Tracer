@@ -1,5 +1,5 @@
 ﻿  main.cpp
 e:\utility programs\vs - c++\ray-tracing\ray-tracing\main.cpp(237): warning C4838: conversion from 'int' to 'unsigned char' requires a narrowing conversion
-e:\utility programs\vs - c++\ray-tracing\ray-tracing\main.cpp(581): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+e:\utility programs\vs - c++\ray-tracing\ray-tracing\main.cpp(582): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Ray-Tracing.vcxproj -> E:\Utility Programs\VS - C++\Ray-Tracing\Debug\Ray-Tracing.exe
   Ray-Tracing.vcxproj -> E:\Utility Programs\VS - C++\Ray-Tracing\Debug\Ray-Tracing.pdb (Full PDB)

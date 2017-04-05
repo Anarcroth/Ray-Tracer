@@ -105,7 +105,7 @@ private:
 	const double SCREEN_HEIGHT = 800;
 	//AADEPTH sends out n number of pixels/rays that hit one pixels and then reflect to other pixels are return a value that is then averaged
 	//the bigger the AADEPTH the more calculations are made, the clearer the image
-	const static int AADEPTH = 4;
+	const static int AADEPTH = 8;
 
 	int n = (int)SCREEN_WIDTH*(int)SCREEN_HEIGHT;
 	RGBType *pixels = new RGBType[n];
@@ -302,8 +302,8 @@ void RayTrace::BeginRender()
 
 	// using OMP to multithread the process
 	//8 seems to be the optimal number of threads wuthout distroying the picture
-	omp_set_num_threads(8);
-	#pragma omp parallel
+	//omp_set_num_threads(8);
+	//#pragma omp parallel
 
 	for (x = 0; x < SCREEN_WIDTH; x++) {
 		for (y = 0; y < SCREEN_HEIGHT; y++) {
