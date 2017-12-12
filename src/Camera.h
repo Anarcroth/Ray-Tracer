@@ -3,20 +3,19 @@
 
 #include "Vect.h"
 
-class Camera {
-
-	//parameters used to define the general coordinates for the scene 
+class Camera
+{
+ private:
+	//parameters used to define the general coordinates for the scene
 	//used in method functions in the added vectors
 	//compute the perspectives
 	Vect campos, camdir, camright, camdown;
 
-public:
+ public:
 
 	Camera();
 
 	Camera(const Vect &, const Vect &, const Vect &, const Vect &);
-
-	//method functions
 
 	Vect getCameraPosition();
 	Vect getCameraDirection();

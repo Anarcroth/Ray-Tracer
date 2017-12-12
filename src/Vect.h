@@ -3,20 +3,16 @@
 
 #include "math.h"
 
-class Vect {
-
-private:
-
-	//the X, Y, Z cooridnates in the plane
+class Vect
+{
+ private:
 	double x, y, z;
 
-public:
+ public:
 
 	Vect();
 
 	Vect(const double &, const double &, const double &);
-
-	//method functions
 
 	double getVectX();
 	double getVectY();
