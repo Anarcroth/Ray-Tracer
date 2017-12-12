@@ -9,18 +9,10 @@ Light::Light()
 	color = Color(1, 1, 1, 0);
 }
 
-Light::Light(const Vect &p, const Color &c)
+Light::Light(const Vect &p, const Color &c) : position(p), color(c)
 {
-	position = p;
-	color = c;
 }
 
-Vect Light::getLightPosition()
-{
-	return position;
-}
+Vect Light::getLightPosition() const { return position; }
 
-Color Light::getLightColor()
-{
-	return color;
-}
+Color Light::getLightColor() const { return color; }

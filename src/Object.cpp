@@ -3,14 +3,11 @@
 #include "Color.h"
 #include "Object.h"
 
-Object::Object() {}
+Color Object::getColor() const { return Color(0.0, 0.0, 0.0, 0); }
 
-Color Object::getColor() { return Color(0.0, 0.0, 0.0, 0); }
+Vect Object::getNormalAt(Vect &intersection_position) const { return Vect(0, 0, 0); }
 
-Vect Object::getNormalAt(Vect intersection_position) {
-	return Vect(0, 0, 0);
-}
-
-double Object::findIntersection(Ray ray) {
+double Object::findIntersection(Ray ray)
+{
 	return 0;
 }

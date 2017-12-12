@@ -5,15 +5,11 @@
 #include "Vect.h"
 #include "Color.h"
 
-class Source {
-
+class Source
+{
 public:
-
-	Source();
-
-	//method functions
-	virtual Vect getLightPosition();
-	virtual Color getLightColor();
+	virtual Vect getLightPosition() const;
+	virtual Color getLightColor() const;
 
 };
 

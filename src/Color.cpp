@@ -7,29 +7,25 @@ Color::Color()
 	blue = 0.5;
 }
 
-Color::Color(const double &r, const double &g, const double &b, const double &s)
+Color::Color(const double r, const double g, const double b, const double s) : red(r), green(g), blue(b), special(s)
 {
-	red = r;
-	green = g;
-	blue = b;
-	special = s;
 }
 
-double Color::getColorRed() { return red; }
+double Color::getColorRed() const { return red; }
 
-double Color::getColorGreen() { return green; }
+double Color::getColorGreen() const { return green; }
 
-double Color::getColorBlue() { return blue; }
+double Color::getColorBlue() const { return blue; }
 
-double Color::getColorSpecial() { return special; }
+double Color::getColorSpecial() const { return special; }
 
-void Color::setColorRed(double &redValue) { red = redValue; }
+void Color::setColorRed(double redValue) { red = redValue; }
 
-void Color::setColorGreen(double &greenValue) { green = greenValue; }
+void Color::setColorGreen(double greenValue) { green = greenValue; }
 
-void Color::setColorBlue(double &blueValue) { blue = blueValue; }
+void Color::setColorBlue(double blueValue) { blue = blueValue; }
 
-void Color::setColorSpecial(double &specialValue) { special = specialValue; }
+void Color::setColorSpecial(double specialValue) { special = specialValue; }
 
 
 double Color::brightness()

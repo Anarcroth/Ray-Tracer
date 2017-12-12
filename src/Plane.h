@@ -6,28 +6,24 @@
 #include "Vect.h"
 #include "Color.h"
 
-class Plane : public Object {
-
+class Plane : public Object
+{
+private:
 	Vect normal;
 	double distance;
 	Color color;
 
 public:
-
 	Plane();
 
 	Plane(const Vect &, const double &, const Color &);
 
-	//method functions
-
-	Vect getPlaneNormal();
-	double getPlaneDistance();
-	virtual Color getColor();
-
-	virtual Vect getNormalAt(Vect point);
-
+	Vect getPlaneNormal() const;
+	double getPlaneDistance() const;
+  
+	virtual Color getColor() const;
+	virtual Vect getNormalAt(Vect point) const;
 	virtual double findIntersection(Ray ray);
-
 };
 
 #endif

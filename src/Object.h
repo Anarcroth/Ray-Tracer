@@ -5,16 +5,12 @@
 #include "Vect.h"
 #include "Color.h"
 
-class Object {
-
+class Object
+{
 public:
+	virtual Color getColor() const;
 
-	Object();
-
-	//method functions
-	virtual Color getColor();
-
-	virtual Vect getNormalAt(Vect intersection_position);
+	virtual Vect getNormalAt(Vect &intersection_position) const;
 
 	virtual double findIntersection(Ray ray);
 

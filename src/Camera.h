@@ -6,9 +6,6 @@
 class Camera
 {
  private:
-	//parameters used to define the general coordinates for the scene
-	//used in method functions in the added vectors
-	//compute the perspectives
 	Vect campos, camdir, camright, camdown;
 
  public:
@@ -17,10 +14,10 @@ class Camera
 
 	Camera(const Vect &, const Vect &, const Vect &, const Vect &);
 
-	Vect getCameraPosition();
-	Vect getCameraDirection();
-	Vect getCameraRight();
-	Vect getCameraDown();
+	Vect getCameraPosition() const;
+	Vect getCameraDirection() const;
+	Vect getCameraRight() const;
+	Vect getCameraDown() const;
 
 };
 

@@ -8,16 +8,13 @@ Vect::Vect()
 	z = 0;
 }
 
-Vect::Vect(const double &i, const double &j, const double &k)
+Vect::Vect(const double i, const double j, const double k) : x(i), y(j), z(k)
 {
-	x = i;
-	y = j;
-	z = k;
 }
 
-double Vect::getVectX() { return x; }
-double Vect::getVectY() { return y; }
-double Vect::getVectZ() { return z; }
+double Vect::getVectX() const { return x; }
+double Vect::getVectY() const { return y; }
+double Vect::getVectZ() const { return z; }
 
 double Vect::magnitude()
 {

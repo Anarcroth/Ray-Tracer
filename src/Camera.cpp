@@ -9,18 +9,14 @@ Camera::Camera()
 	camdown = Vect(0, 0, 0);
 }
 
-Camera::Camera(const Vect &pos, const Vect &dir, const Vect &right, const Vect &down)
+Camera::Camera(const Vect &pos, const Vect &dir, const Vect &right, const Vect &down) : campos(pos), camdir(dir), camright(right), camdown(down)
 {
-	campos = pos;
-	camdir = dir;
-	camright = right;
-	camdown = down;
 }
 
-Vect Camera::getCameraPosition() { return campos; }
+Vect Camera::getCameraPosition() const {  return campos; }
 
-Vect Camera::getCameraDirection() { return camdir; }
+Vect Camera::getCameraDirection() const { return camdir; }
 
-Vect Camera::getCameraRight() { return camright; }
+Vect Camera::getCameraRight() const { return camright; }
 
-Vect Camera::getCameraDown() { return camdown; }
+Vect Camera::getCameraDown() const { return camdown; }

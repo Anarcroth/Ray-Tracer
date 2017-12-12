@@ -5,7 +5,7 @@
 #include <vector>
 #include <cmath>
 #include <limits>
-#include <omp.h>
+//#include <omp.h>
 
 #include <stdlib.h>
 #include <time.h>
@@ -22,7 +22,8 @@
 
 using namespace std;
 
-struct RGBType {
+struct RGBType
+{
 	double r;
 	double g;
 	double b;
@@ -49,21 +50,22 @@ struct VectorPosition
 {
 	const static Vect O;
 	const static Vect X;
+
 	//Y has to be a static without a const because it is used in DefineCamOrientation() as a parameter
-		  static Vect Y;
+  static Vect Y;
 	const static Vect P;
 	const static Vect R;
 	const static Vect M;
 	const static Vect NEW_SPHERE_LOCATION;
 	const static Vect LIGHT_POSITION;
-		  static Vect look_at;
-		  static Vect diff_btw;
-		  static Vect campos;
-		  static Vect camdir;
-		  static Vect camright;
-		  static Vect camdown;
-		  static Camera scene_cam;
-		  static Vect intersecting_ray_direction;
+  static Vect look_at;
+  static Vect diff_btw;
+  static Vect campos;
+  static Vect camdir;
+  static Vect camright;
+  static Vect camdown;
+  static Camera scene_cam;
+  static Vect intersecting_ray_direction;
 } VectPositionCall;
 
 struct ColorOfScene
@@ -74,7 +76,7 @@ struct ColorOfScene
 	const static Color TILE_FLOOR;
 	const static Color GRAY;
 	const static Color BLACK;
-		  static Color intersection_color;
+  static Color intersection_color;
 
 } ColorsOfSceneCall;
 
@@ -86,7 +88,7 @@ struct CameraRay
 class RayTrace
 {
 public:
-	
+
 	void BeginRender();
 	void AddColorToPixels();
 	void DefineCamOrientation();
@@ -109,13 +111,13 @@ private:
 
 	int n = (int)SCREEN_WIDTH*(int)SCREEN_HEIGHT;
 	RGBType *pixels = new RGBType[n];
-	
+
 	double aspectratio = SCREEN_WIDTH / SCREEN_HEIGHT;
 	const double AMBIEN_TLIGHT = 0.2;
 	const double ACCURACY = 0.000001;
 
 	int thisone, aa_index;
-	
+
 	int x, y, aax, aay;
 
 	//start with a blank pixel
@@ -133,7 +135,7 @@ private:
 
 const Vect VectorPosition::O(0, 0, 0);
 const Vect VectorPosition::X(3, 0, 3.5);
-	  Vect VectorPosition::Y(0, 1, 0);
+Vect VectorPosition::Y(0, 1, 0);
 const Vect VectorPosition::P(5.5, 0, 3.5);
 const Vect VectorPosition::R(0, -3, 0);
 const Vect VectorPosition::M(7, 0, -5);
@@ -256,23 +258,23 @@ void RayTrace::VectorSceneDefinitions()
 void RayTrace::AntiAliasingCalc()
 {
 	if (SCREEN_WIDTH > SCREEN_HEIGHT)
-	{
-		//the image is wider than it is tall
-		xamnt = ((x + (double)aax / (AADEPTH - 1)) / SCREEN_WIDTH)*aspectratio - (((SCREEN_WIDTH - SCREEN_HEIGHT) / SCREEN_HEIGHT) / 2);
-		yamnt = ((SCREEN_HEIGHT - y) + (double)aax / (AADEPTH - 1)) / SCREEN_HEIGHT;
-	}
+    {
+      //the image is wider than it is tall
+      xamnt = ((x + (double)aax / (AADEPTH - 1)) / SCREEN_WIDTH)*aspectratio - (((SCREEN_WIDTH - SCREEN_HEIGHT) / SCREEN_HEIGHT) / 2);
+      yamnt = ((SCREEN_HEIGHT - y) + (double)aax / (AADEPTH - 1)) / SCREEN_HEIGHT;
+    }
 	else if (SCREEN_HEIGHT > SCREEN_WIDTH)
-	{
-		//the image is taller than it is wide
-		xamnt = (x + (double)aax / (AADEPTH - 1)) / SCREEN_WIDTH;
-		yamnt = (((SCREEN_HEIGHT - y) + (double)aax / (AADEPTH - 1)) / SCREEN_HEIGHT) / aspectratio - (((SCREEN_HEIGHT - SCREEN_WIDTH) / SCREEN_WIDTH) / 2);
-	}
+    {
+      //the image is taller than it is wide
+      xamnt = (x + (double)aax / (AADEPTH - 1)) / SCREEN_WIDTH;
+      yamnt = (((SCREEN_HEIGHT - y) + (double)aax / (AADEPTH - 1)) / SCREEN_HEIGHT) / aspectratio - (((SCREEN_HEIGHT - SCREEN_WIDTH) / SCREEN_WIDTH) / 2);
+    }
 	else
-	{
-		//the image is square
-		xamnt = (x + (double)aax / (AADEPTH - 1)) / SCREEN_WIDTH;
-		yamnt = ((SCREEN_HEIGHT - y) + (double)aax / (AADEPTH - 1)) / SCREEN_HEIGHT;
-	}
+    {
+      //the image is square
+      xamnt = (x + (double)aax / (AADEPTH - 1)) / SCREEN_WIDTH;
+      yamnt = ((SCREEN_HEIGHT - y) + (double)aax / (AADEPTH - 1)) / SCREEN_HEIGHT;
+    }
 }
 
 void RayTrace::CamRayCalc()
@@ -326,35 +328,35 @@ void RayTrace::BeginRender()
 					vector<double> intersections;
 
 					for (size_t index = 0; index < SceneObjectsCall.scene_objects.size(); index++)
-					{
-						intersections.push_back(SceneObjectsCall.scene_objects.at(index)->findIntersection(cam_ray));
-					}
+            {
+              intersections.push_back(SceneObjectsCall.scene_objects.at(index)->findIntersection(cam_ray));
+            }
 
 					index_of_winning_object = WinningObjectIndex(intersections);
 
-					if (index_of_winning_object == -1) 
-					{
-						SetBackgroundBlack();
-					}
-					else 
-					{
-						//index corresponds to an object in the scene
-						if (intersections.at(index_of_winning_object) > ACCURACY)
-						{
-							//determine the position and direction vectors at the point of intersection
+					if (index_of_winning_object == -1)
+            {
+              SetBackgroundBlack();
+            }
+					else
+            {
+              //index corresponds to an object in the scene
+              if (intersections.at(index_of_winning_object) > ACCURACY)
+                {
+                  //determine the position and direction vectors at the point of intersection
 
-							Vect intersection_position = CameraRayCall.cam_ray_origin.vectAdd(cam_ray_direction.vectMult(intersections.at(index_of_winning_object)));
-							VectPositionCall.intersecting_ray_direction = cam_ray_direction;
+                  Vect intersection_position = CameraRayCall.cam_ray_origin.vectAdd(cam_ray_direction.vectMult(intersections.at(index_of_winning_object)));
+                  VectPositionCall.intersecting_ray_direction = cam_ray_direction;
 
-							//color in the points
-							ColorsOfSceneCall.intersection_color = getColorAt(intersection_position,
-								VectPositionCall.intersecting_ray_direction,
-								SceneObjectsCall.scene_objects, index_of_winning_object,
-								SceneObjectsCall.light_sources, ACCURACY, AMBIEN_TLIGHT);
+                  //color in the points
+                  ColorsOfSceneCall.intersection_color = getColorAt(intersection_position,
+                                                                    VectPositionCall.intersecting_ray_direction,
+                                                                    SceneObjectsCall.scene_objects, index_of_winning_object,
+                                                                    SceneObjectsCall.light_sources, ACCURACY, AMBIEN_TLIGHT);
 
-							ColorInPoints();
-						}
-					}
+                  ColorInPoints();
+                }
+            }
 				}
 			}
 			AddColorToPixels();
@@ -505,12 +507,12 @@ Color RayTrace::getColorAt(Vect intersection_position, Vect intersecting_ray_dir
 				Vect reflection_intersection_ray_direction = reflection_direction;
 
 				Color reflection_intersection_color = getColorAt(reflection_intersection_position,
-																	reflection_intersection_ray_direction,
-																		scene_objects,
-																			index_of_winning_object_with_reflection,
-																				light_sources,
-																					accuracy,
-																						ambientlight);
+                                                         reflection_intersection_ray_direction,
+                                                         scene_objects,
+                                                         index_of_winning_object_with_reflection,
+                                                         light_sources,
+                                                         accuracy,
+                                                         ambientlight);
 
 
 				final_color = final_color.colorAdd(reflection_intersection_color.colorScalar(winning_object_color.getColorSpecial()));

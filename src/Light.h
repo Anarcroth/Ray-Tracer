@@ -15,10 +15,8 @@ public:
 
 	Light(const Vect &, const Color &);
 
-	//method functions
-
-	virtual Vect getLightPosition();
-	virtual Color getLightColor();
+	virtual Vect getLightPosition() const;
+	virtual Color getLightColor() const;
 
 };
 

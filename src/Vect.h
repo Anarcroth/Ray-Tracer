@@ -9,14 +9,13 @@ class Vect
 	double x, y, z;
 
  public:
-
 	Vect();
 
-	Vect(const double &, const double &, const double &);
+	Vect(const double, const double, const double);
 
-	double getVectX();
-	double getVectY();
-	double getVectZ();
+	double getVectX() const;
+	double getVectY() const;
+	double getVectZ() const;
 
 	double magnitude();
 
