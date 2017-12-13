@@ -17,7 +17,7 @@ class Camera
 	Vect getCameraPosition() const;
 	Vect getCameraDirection() const;
 	Vect getCameraRight() const;
-	Vect getCameraDown() const;
+	Vect getCameraDown() ;
 
 };
 

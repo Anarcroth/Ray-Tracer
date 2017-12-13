@@ -25,7 +25,7 @@ double Plane::findIntersection(Ray ray)
 	Vect ray_direction = ray.getRayDirection();
 
 	//'a' is the dot product between the direction of the ray is coming from and the normal vector of the plane
-	double a = ray_direction.dotProduct(normal);
+ 	double a = ray_direction.dotProduct(normal);
 
 	if (a == 0)
     {

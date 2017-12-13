@@ -9,7 +9,7 @@ class Color
 public:
 	Color();
 
-	Color(const double, const double, const double, const double);
+	Color(const double &, const double &, const double &, const double &);
 
 	double getColorRed() const;
 	double getColorGreen() const;

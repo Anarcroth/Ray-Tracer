@@ -7,7 +7,7 @@ Color::Color()
 	blue = 0.5;
 }
 
-Color::Color(const double r, const double g, const double b, const double s) : red(r), green(g), blue(b), special(s)
+Color::Color(const double &r, const double &g, const double &b, const double &s) : red(r), green(g), blue(b), special(s)
 {
 }
 

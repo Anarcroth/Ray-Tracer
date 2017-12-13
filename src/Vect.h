@@ -11,7 +11,7 @@ class Vect
  public:
 	Vect();
 
-	Vect(const double, const double, const double);
+	Vect(const double &, const double &, const double &);
 
 	double getVectX() const;
 	double getVectY() const;

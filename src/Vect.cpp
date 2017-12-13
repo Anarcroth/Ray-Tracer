@@ -8,7 +8,7 @@ Vect::Vect()
 	z = 0;
 }
 
-Vect::Vect(const double i, const double j, const double k) : x(i), y(j), z(k)
+Vect::Vect(const double &i, const double &j, const double &k) : x(i), y(j), z(k)
 {
 }
 

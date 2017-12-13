@@ -19,4 +19,4 @@ Vect Camera::getCameraDirection() const { return camdir; }
 
 Vect Camera::getCameraRight() const { return camright; }
 
-Vect Camera::getCameraDown() const { return camdown; }
+Vect Camera::getCameraDown() { return camdown; }
